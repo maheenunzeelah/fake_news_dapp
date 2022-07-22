@@ -1,0 +1,18 @@
+.input_news , .input_news:active, .input_news:focus{
+    font-size: 1.3rem !important;
+    /* box-shadow: 0 0 0 0.25rem white!important;
+    background-color: white!important ; */
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+.sub_btn{
+    display: flex!important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width:11%;
+}
