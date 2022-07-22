@@ -1,7 +1,11 @@
 pragma solidity >=0.6.0 ;
 import "openzeppelin-solidity/contracts/access/AccessControl.sol";
 contract News is AccessControl{
+
    bytes32 public constant PUBLISHER_ROLE = keccak256("PUBLISHER_ROLE");
+   event NewsPublished(address publisher);
+   event NewsShared(address user,address publisher);
+
    constructor(){
      _setupRole(DEFAULT_ADMIN_ROLE,msg.sender);
      _setRoleAdmin(PUBLISHER_ROLE, DEFAULT_ADMIN_ROLE);
@@ -37,27 +41,10 @@ contract News is AccessControl{
   {
     grantRole(PUBLISHER_ROLE, account);
   }
-  event NewsPublished(address publisher);
-  event NewsShared(address user,address publisher);
+
  function shareNews(address _publisher) external{
     emit NewsShared(msg.sender,_publisher);
   } 
-  //    struct News{
-//         uint id;
-//         string title;
-//         string content;
-//         address author;
-//         uint time;
-//     }
-//    uint public newsCount;
-//    mapping(uint=>News) public news;
-//   function publishNews(string calldata _title, string calldata _content) external onlyPublisher{
-//      news[newsCount].title=_title;
-//      news[newsCount].content=_content;
-//      news[newsCount].author=msg.sender;
-//      news[newsCount].time=block.timestamp;
-//      emit NewsPublished(newsCount,msg.sender);
-//      newsCount++;
-//   }
+
 
 }
